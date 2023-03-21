@@ -1,0 +1,29 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+#duration: 1 #0.001425986        # Duration in seconds
+duration: 20        # Duration in seconds
+ibs_step: 1 #0.001 #1.4259865297332022e-05                # time step
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/SPS_top_protons/sps_q26_top_protons.seq" 
+sequence_name: 'sps'
+
+energy: 451                           # energy in GeV
+bunch_intensity: 1.2e11
+emit_x: 2.5
+emit_y: 2.5                         # ey in um
+blns: 1.2 
+bl_lev: 0.0                  
+particle: "proton"
+mass: 0.9382723
+radius: 1.534698e-18
+charge: 1
+
+V0max: 3                       # RF voltage in MV
+h: 4653
+cc_name_knobs: "vrf400"
+
+# Save results
+save_to: ./IBS_output.parquet

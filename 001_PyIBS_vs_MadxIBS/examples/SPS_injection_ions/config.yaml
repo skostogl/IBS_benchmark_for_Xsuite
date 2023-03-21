@@ -1,0 +1,29 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+#duration: 1 #0.001425986        # Duration in seconds
+duration: 20        # Duration in seconds
+ibs_step: 1 #0.001 #1.4259865297332022e-05                # time step
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/SPS_injection_ions/sps_q26_injection_ions.seq" 
+sequence_name: 'sps'
+
+energy: 1415.72                           # energy in GeV
+bunch_intensity: 3.5e8
+emit_x: 1.2612
+emit_y: 0.9081                         # ey in um
+blns: 2.6284 
+bl_lev: 0.0                  
+particle: "ion"
+mass: 193.6872729
+radius: 4.998945710122783e-17
+charge: 82
+
+V0max: 1.7                       # RF voltage in MV
+h: 4653
+cc_name_knobs: "vrf400"
+
+# Save results
+save_to: ./IBS_output.parquet

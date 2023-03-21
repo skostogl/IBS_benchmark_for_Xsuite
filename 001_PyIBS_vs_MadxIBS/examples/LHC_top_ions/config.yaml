@@ -1,0 +1,29 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+#duration: 1 #0.001425986        # Duration in seconds
+duration: 7200        # Duration in seconds
+ibs_step: 300 #0.001 #1.4259865297332022e-05                # time step
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/LHC_top_ions/LHC.seq" 
+sequence_name: 'lhcb1'
+
+energy: 557600.0   # 6.8 x Z
+bunch_intensity: 1.8e8
+emit_x: 1.65
+emit_y: 1.65                         # ey in um
+blns: 1.2 
+bl_lev: 0.0                  
+particle: "ion"
+mass: 193.6872729
+radius: 4.998945710122783e-17
+charge: 82
+
+V0max: 14                       # RF voltage in MV
+h: 35640
+cc_name_knobs: "vrf400"
+
+# Save results
+save_to: ./IBS_output.parquet
