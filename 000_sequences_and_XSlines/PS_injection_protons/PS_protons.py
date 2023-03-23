@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Generator of sequence files for PS Pb ions at FLAT BOTTOM 
+Generator of sequence files for PS protons at FLAT BOTTOM 
 - also matching tunes and chromaticities 
 """
 import xobjects as xo
@@ -17,42 +17,27 @@ optics = '/afs/cern.ch/eng/acc-models/ps/2022'
 if not os.path.isdir("ps"):
     os.symlink(optics, "ps")
 
-# Pb ion beam parameters for PS 
-m_u = 931.49410242e6  # 1 Dalton in eV/c^2 -- atomic mass unit 
-atomic_mass_pb208 = 207.9766519 # Pb208 atomic mass from The AME2016 atomic mass evaluation (II).
-m_ion = atomic_mass_pb208*m_u  
-Z = 54
-E_kin = 0.0722*1e9*atomic_mass_pb208 # total kinetic energy in eV per particle at injection, 
-#   from LIU parameter table https://edms.cern.ch/ui/file/1420286/2/LIU-Ions_beam_parameter_table.pdf
-E_tot = m_ion + E_kin
-
 # Initiate MADX sequence, and call the relevant madx files and macros  
 madx = Madx()
 madx.call("{}/_scripts/macros.madx".format(optics))
-
-# Correct beam command tp obtain same Brho and beta0 as Hannes' and Isabelle Table 5 (https://cds.cern.ch/record/2749453)
-madx.input(" \
-           Beam, particle=ion, mass={}, charge={}, energy = {}; \
-           DPP:=BEAM->SIGE*(BEAM->ENERGY/BEAM->PC)^2;  \
-           ".format(m_ion/1e9, Z, E_tot/1e9))
-
+madx.call("{}/scenarios/lhc/1_flat_bottom/ps_fb_lhc.beam".format(optics))   
+madx.input('''BRHO      := BEAM->PC * 3.3356;''')
 madx.call("{}/ps_mu.seq".format(optics))
 madx.call("{}/ps_ss.seq".format(optics))
-madx.call("{}/scenarios/lhc_ion/1_flat_bottom/ps_fb_ion.str".format(optics))
+madx.call("{}/scenarios/lhc/1_flat_bottom/ps_fb_lhc.str".format(optics))
 madx.call('PS_match_tunes_and_chroma.madx')
 madx.use(sequence='ps')
 
 
-############ MATCHING OF TUNES AND CHROMATICITY ############  
-# Put in Twiss summary values for PS ions: https://acc-models.web.cern.ch/acc-models/ps/2022/scenarios/lhc_ion/
-
+############ MATCHING TUNES AND CHROMATICITY ############
+# Put in values for PS protons to LHC: https://acc-models.web.cern.ch/acc-models/ps/2022/scenarios/lhc/
 # When we perform matching, recall the MADX convention that all chromatic functions are multiplied by relativistic beta factor
 # Thus, when we match for a given chromaticity, need to account for this factor to get correct value in Xsuite and PTC
 beta0 = madx.sequence['ps'].beam.beta 
 madx.input("qx = 6.21")
 madx.input("qy = 6.245")
-madx.input(f"qpx = -5.26716824/{beta0}")
-madx.input(f"qpy = -7.199251093/{beta0}")
+madx.input(f"qpx = 0.7273839232/{beta0}")
+madx.input(f"qpy = -2.871405047/{beta0}")
 
 madx.use("ps")
 madx.input("seqedit, sequence=PS;")
@@ -87,11 +72,11 @@ tracker = xt.Tracker(_context=context, _buffer=buf, line=line)
 
 
 ############ SET CAVITY VOLTAGE - with info from Alexandre Lasheen ############
-# Ions: 10 MHz cavities: 1.7 MV, h=16
+# Ions: 10 MHz cavities: 200 kV for LHCPILOT, h=16
 # In the ps_ss.seq, the 10 MHz cavities are PR_ACC10 - there seems to be 12 of them in the straight sections
 harmonic_nb = 16
-nn = 'pa.c10.11'  # for now, activate the first of the RF cavities 
-V_RF = 38.0958  # kV
+nn = 'pa.c10.11'  # for now test the first of the RF cavities 
+V_RF = 200  # kV - in reality too high for one cavity but should suffice for our tracking purposes
 
 # MADX sequence 
 madx.sequence.ps.elements[nn].lag = 0
@@ -110,14 +95,14 @@ twiss_thin_RF = madx.twiss()
 twiss_xtrack_RF = tracker.twiss()  
 
 # Save MADX sequence
-madx.command.save(sequence='ps', file='PS_2022_Pb_ions_matched_with_RF.seq', beam=True)
+madx.command.save(sequence='ps', file='PS_2022_Protons_matched_with_RF.seq', beam=True)
 
 # Save Xsuite sequence
-with open('PS_2022_Pb_ions_matched_with_RF.json', 'w') as fid:
+with open('PS_2022_Protons_matched_with_RF.json', 'w') as fid:
     json.dump(line.to_dict(), fid, cls=xo.JEncoder)
     
 # Print sanity checks 
-print("\nPB IONS WITH RF: XTRACK vs MADX sequence:")
+print("\nPROTONS WITH RF: XTRACK vs MADX sequence:")
 print("MAD-X thin:   " f"Qx  = {twiss_thin_RF.summary['q1']:.8f}"            f"   Qy  = {twiss_thin_RF.summary['q2']:.8f}")
 print("Xsuite:       " f"Qx  = {twiss_xtrack_RF['qx']:.8f}"                  f"   Qy  = {twiss_xtrack_RF['qy']:.8f}\n")
 print("MAD-X thin:   " f"Q'x = {twiss_thin_RF.summary['dq1']*beta0:.7f}"     f"   Q'y = {twiss_thin_RF.summary['dq2']*beta0:.7f}")
