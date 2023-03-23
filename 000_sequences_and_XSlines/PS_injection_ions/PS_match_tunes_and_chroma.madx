@@ -1,0 +1,34 @@
+! Input macro from Sebastien Joly for matching tunes and chromaticity for PS 
+! k1prpfwf represents the quadrupolar effect of the pole face winding, k2PRPFWF represents the sextupolar effect of them. 
+! Pointed out in detail in https://gitlab.cern.ch/acc-models/acc-models-ps/-/blob/2022/ps_mu.seq
+match_tunes_and_chroma(qx, qy, qpx, qpy): macro = {
+
+  value, qx;
+  value, qy;
+  value, qpx;
+  value, qpy;
+  match;
+    global, q1=qx, q2=qy;
+    vary,   name=k1prpfwf, step=1.0E-7 ;
+    vary,   name=k1prpfwd, step=1.0E-7 ;
+    lmdif,  calls=100, tolerance=1.0E-21;
+  endmatch;
+
+  match;
+    global, dq1=qpx, dq2=qpy;
+    vary,   name=k2prpfwf, step=1.0E-7 ;
+    vary,   name=k2prpfwd, step=1.0E-7 ;
+    lmdif,  calls=500, tolerance=1.0E-21;
+  endmatch;
+
+  match;
+    global, q1=qx, q2=qy;
+    global, dq1=qpx, dq2=qpy;
+    vary,   name=k1prpfwf, step=1.0E-7 ;
+    vary,   name=k1prpfwd, step=1.0E-7 ;
+    vary,   name=k2prpfwf, step=1.0E-7 ;
+    vary,   name=k2prpfwd, step=1.0E-7 ;
+    lmdif,  calls=100, tolerance=1.0E-21;
+  endmatch;
+
+};
