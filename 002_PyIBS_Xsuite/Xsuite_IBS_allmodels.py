@@ -43,6 +43,12 @@ line = xt.Line.from_dict(dd)
 
 p0 = line.particle_ref
 
+# Add longitudinal limit rectangle 
+bucket_length = line.get_length()/Harmonic_Num
+line.unfreeze() # if you had already build the tracker
+line.append_element(element=xt.LongitudinalLimitRect(min_zeta=-bucket_length/2, max_zeta=bucket_length/2), name='long_limit')
+line.build_tracker()
+
 ## Choose a context
 context = xo.ContextCpu()         # For CPU
 
