@@ -17,3 +17,5 @@ A literature review of space charge and IBS can be found [here](https://www.over
     - examples: A series of examples that benchmarks the analytical approach of MADX-IBS and PyIBS. Input parameters are passed through config.yaml and sequences are read from 000_sequences_and_XSlines.
 
 3. 002_PyIBS_Xsuite: PyIBS with Xsuite example for SPS ions. Based on CLIC example of https://github.com/MichZampetakis/IBS_for_Xsuite/blob/main/CLIC_DRs_IBS_allmodels.py
+
+4. 003_PyIBS_Xsuite_treemaker: scripts to submit to htcondor with tree_maker
