@@ -1,19 +1,12 @@
 import os
 import xtrack as xt
+import xobjects as xo
 from cpymad.madx import Madx
 import json
 import sys
 import numpy as np
 from cpymad.madx import Madx
 
-class JEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.ndarray):
-            return obj.tolist()
-        elif np.issubdtype(type(obj), np.integer):
-            return int(obj)
-        else:
-            return json.JSONEncoder.default(self, obj)
 
 seq_name = 'sps'
 
@@ -82,7 +75,7 @@ tw_xtrack = tracker.twiss()
 folder_name = 'xsuite_line'
 os.makedirs(folder_name, exist_ok=True)
 with open(folder_name +'/sps_line_ions_for_tracking.json', 'w') as fid:
-  json.dump(line.to_dict(), fid, cls=JEncoder)
+  json.dump(line.to_dict(), fid, cls=xo.JEncoder)
 
 
 mad.input(f'''
