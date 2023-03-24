@@ -1,0 +1,10 @@
+'root':
+  setup_env_script: '/home/HPC/sterbini/2021_12_07/miniconda/bin/activate'
+  generations:
+    1: # Launch the tracking
+      job_folder: 'master_jobs/001_run_ibs'
+      job_executable: run_analysis.py # has to be a python file
+      #files_to_clone: # relative to the template folder
+      #  - clean_it.sh
+      run_on: 'htc'
+      htc_job_flavor: 'tomorrow' # optional parameter to define job flavor, default is espress

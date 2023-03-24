@@ -1,0 +1,27 @@
+n_part: 5000
+n_turns: 80 # in turns
+IBS_step: 5 # in turns
+ibs_lib_path: "../001_PyIBS_vs_MadxIBS/master"
+
+# Sequence to load
+xsuite_line: "../000_sequences_and_XSlines/SPS_injection_ions/xsuite_line/sps_line_ions_for_tracking.json" 
+
+energy: 1415.72                           # energy in GeV
+bunch_intensity: 3.5e11
+emit_x: 1.2612
+emit_y: 0.9081                         # ey in um
+sigma_z: 0.039
+
+V0max: 1.7                       # RF voltage in MV
+h: 4653
+
+modes:
+#- "all"
+- "kinetic"
+# - "simple"
+- "analytical"
+
+# Save results
+save_to: .
+log_file: ./log.json
+parent: ./
