@@ -1,3 +1,5 @@
+# IBS benchmarking for Xsuite
+
 A series of examples including IBS with the aim of integrating IBS effects in Xsuite:
 
 - IBS MADX code: modified version on March 2023 wrapped in cpymad. Original code from: S. Papadopoulou and F. Antoniou in https://github.com/stpapado/calculateIBS_MADX.git
@@ -5,6 +7,8 @@ A series of examples including IBS with the aim of integrating IBS effects in Xs
 - Xsuite by G. Iadarola et al in https://github.com/xsuite
 
 ----------------------
+
+A literature review of space charge and IBS can be found [here](https://www.overleaf.com/read/nmsnvjvnwfht).
 
 1. 000_sequences_and_XSlines: save sequences and create Xsuite lines. Examples for LHC protons and ions, SPS protons and ions, injection and top energy. Parameters might not exactly correspond to operational scenario. For the LHC, 000_pymask.py and optics_specific_tools.py can be found in https://github.com/lhcopt/lhcmask/tree/master/python_examples 
 
