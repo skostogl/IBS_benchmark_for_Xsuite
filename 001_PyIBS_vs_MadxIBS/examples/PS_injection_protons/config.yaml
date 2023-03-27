@@ -1,0 +1,30 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+#duration: 1 #0.001425986        # Duration in seconds
+duration: 20        # Duration in seconds
+ibs_step: 1 #0.001 #1.4259865297332022e-05                # time step
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/PS_injection_protons/PS_2022_Protons_matched_with_RF.seq" 
+sequence_name: 'ps'
+
+# Preliminary proton parameters, from Table 1 here: https://cds.cern.ch/record/2749453/files/CERN-ACC-NOTE-2021-0003.pdf
+energy: 2.94827184                           # energy in GeV
+bunch_intensity: 8.1e8
+emit_x: 0.8
+emit_y: 0.5                         # ey in um
+blns: 8.0    # BL needs to be checked: closest order of magnitude found in last graph here: https://indico.psi.ch/event/6698/sessions/3635/attachments/13780/18077/OptimizationOfTheRFManipulationsInTheCERNPS-A_Lasheen.pdf
+bl_lev: 0.0                  
+particle: "proton"
+mass: 0.9382723
+radius: 1.534698e-18
+charge: 1
+
+V0max: 0.200                       # RF voltage in MV
+h: 16
+cc_name_knobs: "vrf400"  # not correct for PS, but keep for now 
+
+# Save results
+save_to: ./IBS_output.parquet
