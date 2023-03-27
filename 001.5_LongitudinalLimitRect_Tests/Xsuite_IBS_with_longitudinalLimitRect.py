@@ -131,6 +131,14 @@ plt.rc('ytick', labelsize=MEDIUM_SIZE)   # fontsize of the tick labels
 plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
+# Plot the figures
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize = (12,7))
+fig.suptitle('SPS Pb ions: Delta mean and spread', fontsize=18)
+ax1.plot(tbt_checks['mean_delta'], 'b', label='Mean($\delta$)')
+ax1.legend() 
+ax2.plot(tbt_checks['sig_delta'], 'r', label='$\\sigma_{\delta}$')
+ax2.legend() 
+fig.savefig(f'Plots/{mode_limit}_SPS_Pb_ions_Nominal_parameter_check_DELTA_{n_turns}turns.png', dpi=250)
 
 fig2, (ax3, ax4) = plt.subplots(2, 1, figsize = (10,7))
 fig2.suptitle('SPS Pb ions - nominal parameters: Bunch Length', fontsize=18)
