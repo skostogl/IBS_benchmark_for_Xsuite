@@ -13,7 +13,12 @@ bunch_intensity: 3.5e11  # nominal value: 3.5e8
 emit_x: 1.2612
 emit_y: 0.9081                         # ey in um
 sigma_z: 0.039   #  0.197 m is Sofia's default, 0.23 m is in Table 1
-nr_kinetic_runs: 1 # set to 3 if we want to average kinetic kick, otherwise set to 1
+
+# Activate the different modes
+mode_kinetic: 1
+mode_analytical: 1
+mode_simple: 0
+
 
 V0max: 1.7                       # RF voltage in MV
 h: 4653
