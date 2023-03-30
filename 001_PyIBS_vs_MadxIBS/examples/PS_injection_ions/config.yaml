@@ -16,11 +16,11 @@ bunch_intensity: 8.1e8
 emit_x: 0.8
 emit_y: 0.5                       # ey in um
 blns: 2.5                         # estimate from tomograph plot under folder /Bunch_length_data 
-bl_lev: 0.0                  
+bl_lev: 160                  
 particle: "ion"
 mass: 193.6872729
 radius: 4.998945710122783e-17
-charge: 82
+charge: 54
 
 # RF voltage from this example: https://gitlab.cern.ch/elwaagaa/xsuite-sps-ps-sequence-benchmarker/-/blob/master/Test3_AddRF_and_Test_Tracking/Test3_PS_2022_Pb_Ions_Add_RF_and_Test_Tracking.py
 V0max: 0.0380958                    # RF voltage in MV
