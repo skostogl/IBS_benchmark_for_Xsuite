@@ -45,6 +45,27 @@ call,file="sps/toolkit/macro.madx";
 call,file="sps/toolkit/match_tune.madx";
 ''')
 
+# Chromaticity matching - use values generated under Test4_Chromaticity matching here 
+# as values are not displayed on acc-models 
+# https://gitlab.cern.ch/elwaagaa/xsuite-sps-ps-sequence-benchmarker
+dq1 = -3.460734474533172e-09  # basically zero 
+dq2 = -3.14426538905229e-09
+mad.use('sps')
+mad.exec("sps_define_sext_knobs();")
+mad.exec("sps_set_chroma_weights_q26();")
+mad.input(f"""match;
+global, dq1={dq1};
+global, dq2={dq2};
+vary, name=qph_setvalue;
+vary, name=qpv_setvalue;
+jacobian, calls=10, tolerance=1e-25;
+endmatch;""")
+
+####### SET CAVITY VOLTAGE - with info from Hannes #######
+# 6x200 MHz cavities: actcse, actcsf, actcsh, actcsi (3 modules), actcsg, actcsj (4 modules)
+# acl 800 MHz cavities
+# acfca crab cavities
+# Ions: all 200 MHz cavities: 1.7 MV, h=4653
 harmonic_nb = 4653
 nn = 'actcse.31632'
 mad.sequence.sps.elements[nn].lag = 0.5

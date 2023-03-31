@@ -1,18 +1,24 @@
 n_part: 5000
-n_turns: 80 # in turns
+n_turns: 100 # in turns
 IBS_step: 5 # in turns
 ibs_lib_path: "../001_PyIBS_vs_MadxIBS/master"
 
 # Sequence to load
 xsuite_line: "../000_sequences_and_XSlines/SPS_injection_ions/xsuite_line/sps_line_ions_for_tracking.json" 
 
+# Beam parameters 
+# Nominal Pb ion beam parameters for SPS can be found in Table 1 here: https://cds.cern.ch/record/2749453
 energy: 1415.72                           # energy in GeV
-#bunch_intensity: 3.5e8
-bunch_intensity: 3.5e11
+bunch_intensity: 3.5e11  # nominal value: 3.5e8
 emit_x: 1.2612
 emit_y: 0.9081                         # ey in um
-#sigma_z: 0.197
-sigma_z: 0.039
+sigma_z: 0.039   #  0.197 m is Sofia's default, 0.23 m is in Table 1
+
+# Activate the different modes
+mode_kinetic: 1
+mode_analytical: 1
+mode_simple: 0
+
 
 V0max: 1.7                       # RF voltage in MV
 h: 4653

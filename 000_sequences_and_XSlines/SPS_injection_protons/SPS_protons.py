@@ -45,6 +45,20 @@ call,file="sps/toolkit/macro.madx";
 call,file="sps/toolkit/match_tune.madx";
 ''')
 
+# Match the chromaticities
+# - values from https://acc-models.web.cern.ch/acc-models/sps/2021/scenarios/lhc_proton/
+dq1 = 0.0083385932924699; 
+dq2 = -0.0019057430908735074;
+mad.exec("sps_define_sext_knobs();")
+mad.exec("sps_set_chroma_weights_q26();")
+mad.input(f"""match;
+global, dq1={dq1};
+global, dq2={dq2};
+vary, name=qph_setvalue;
+vary, name=qpv_setvalue;
+jacobian, calls=10, tolerance=1e-25;
+endmatch;""")
+
 harmonic_nb = 4653
 nn = 'actcse.31637'
 mad.sequence.sps.elements[nn].lag = 0.5

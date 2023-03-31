@@ -1,0 +1,31 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+#duration: 1 #0.001425986        # Duration in seconds
+duration: 20        # Duration in seconds
+ibs_step: 1 #0.001 #1.4259865297332022e-05                # time step
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/PS_injection_ions/PS_2022_Pb_ions_matched_with_RF.seq" 
+sequence_name: 'ps'
+
+# Beam parameters for PS ions - what is possible from Hannes' and Isabelle's report: https://cds.cern.ch/record/2749453/files/CERN-ACC-NOTE-2021-0003.pdf
+energy: 208.744939                          # energy in GeV
+bunch_intensity: 8.1e8
+emit_x: 0.8
+emit_y: 0.5                       # ey in um
+blns: 2.5                         # estimate from tomograph plot under folder /Bunch_length_data 
+bl_lev: 0.0                  
+particle: "ion"
+mass: 193.6872729
+radius: 4.998945710122783e-17
+charge: 54
+
+# RF voltage from this example: https://gitlab.cern.ch/elwaagaa/xsuite-sps-ps-sequence-benchmarker/-/blob/master/Test3_AddRF_and_Test_Tracking/Test3_PS_2022_Pb_Ions_Add_RF_and_Test_Tracking.py
+V0max: 0.0380958                    # RF voltage in MV
+h: 16
+cc_name_knobs: "vrf400"    # not correct as of now
+
+# Save results
+save_to: ./IBS_output.parquet
