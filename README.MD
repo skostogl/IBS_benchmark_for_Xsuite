@@ -8,7 +8,10 @@ A series of examples including IBS with the aim of integrating IBS effects in Xs
 
 ----------------------
 
-A literature review of space charge and IBS can be found [here](https://www.overleaf.com/read/nmsnvjvnwfht).
+ ## IBS background
+Intra-beam scattering (IBS) is together with space charge an incoherent type of collective effect, that can strongly degrade beam quality and lead to uncontrolled emittance growth - particularly in the low-energy regime with beams of higher charge states and bunch brightness. In particular, the CERN Ion Injector Chain is strongly affected, where IBS and space charge create intensity bottlenecks in the Proton Synchrotron (PS) and the Super Proton Synchrotron (SPS). A **literature review** of space charge and IBS can be found [here](https://www.overleaf.com/read/nmsnvjvnwfht).
+
+## File structure
 
 1. 000_sequences_and_XSlines: save sequences and create Xsuite lines. Examples for LHC protons and ions, SPS protons and ions, injection and top energy. Parameters might not exactly correspond to operational scenario. For the LHC, 000_pymask.py and optics_specific_tools.py can be found on the [lhcmask repo](https://github.com/lhcopt/lhcmask/tree/master/python_examples). Step-by-step benchmarking of PS and SPS sequences for Xsuite vs PTC and MADX can be found in [this repo](https://gitlab.cern.ch/elwaagaa/xsuite-sps-ps-sequence-benchmarker) 
     
