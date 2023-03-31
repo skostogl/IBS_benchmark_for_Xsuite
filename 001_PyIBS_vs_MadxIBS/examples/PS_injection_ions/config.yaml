@@ -16,7 +16,7 @@ bunch_intensity: 8.1e8
 emit_x: 0.8
 emit_y: 0.5                       # ey in um
 blns: 2.5                         # estimate from tomograph plot under folder /Bunch_length_data 
-bl_lev: 160                  
+bl_lev: 0.0                  
 particle: "ion"
 mass: 193.6872729
 radius: 4.998945710122783e-17
