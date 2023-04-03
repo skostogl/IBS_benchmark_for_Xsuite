@@ -117,7 +117,7 @@ class cluster():
 
 
 if __name__=='__main__':
-    root = tree_maker.tree_from_json('tree_maker_SPS_injection_ions.json')
+    root = tree_maker.tree_from_json('tree_maker_SPS_injection_ions_test.json')
     if root.has_been('completed'):
         print('All descendants of root are completed!')
     else:

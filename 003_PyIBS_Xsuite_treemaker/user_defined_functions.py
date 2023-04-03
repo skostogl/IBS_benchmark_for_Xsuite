@@ -4,6 +4,11 @@ def generate_run_sh(node, generation_number):
                      .parameters["generations"]
                      [generation_number]
                      ["job_executable"])
+   python_command_plot =  (node
+                     .root
+                     .parameters["generations"]
+                     [generation_number]
+                     ["job_executable_plot"])
    return (f'source {node.root.parameters["setup_env_script"]}\n'
            f'cd {node.get_abs_path()}\n'
            f'python {python_command} > output.txt 2> error.txt\n')
@@ -14,6 +19,11 @@ def generate_run_sh_htc(node, generation_number):
                      .parameters["generations"]
                      [generation_number]
                      ["job_executable"])
+   python_command_plot =  (node
+                     .root
+                     .parameters["generations"]
+                     [generation_number]
+                     ["job_executable_plot"])
    if generation_number==1:
    	return (f'#!/bin/bash\n'
            f'source {node.root.parameters["setup_env_script"]}\n'
@@ -21,6 +31,7 @@ def generate_run_sh_htc(node, generation_number):
            f'ls\n'
            f'pwd\n'
            f'python {python_command} > output_ht.txt 2> error_ht.txt\n'
+	   f'python {python_command_plot} > output_ht_plot.txt 2> error_ht_plot.txt\n'
            #f'rm -rf xsuite_lines\n'
            #f'cp -rf output* log* *parquet {node.get_abs_path()}\n')
            f'cp -rf *output* *log* *parquet* *txt* {node.get_abs_path()}\n')

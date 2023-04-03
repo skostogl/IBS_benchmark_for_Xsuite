@@ -97,7 +97,7 @@ for attr, value in attributes.items():
     sim_params+=f'{attr}: {value}\n'
 print()
 
-with open("sim_params.txt", "w") as file:
+with open(f"{save_to}/sim_params.txt", "w") as file:
   file.write(sim_params)
 
 ###### ITERATE OVER THE CHOSEN MODES #######
@@ -243,5 +243,5 @@ for mode in modes:
         pathlib.Path(config['save_to']).mkdir(parents=True, exist_ok=True)
         pd_simple.to_parquet(f"{save_to}/xsuite_{mode}.parquet")
 
-# Log as completed 
-tree_maker.tag_json.tag_it(config['log_file'], 'completed')  
+# Log as completed - not here, done after plotting is complete
+# tree_maker.tag_json.tag_it(config['log_file'], 'completed')  
