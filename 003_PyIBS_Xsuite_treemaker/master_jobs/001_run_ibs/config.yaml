@@ -15,11 +15,10 @@ sigma_z: 0.039
 V0max: 1.7                       # RF voltage in MV
 h: 4653
 
-modes:
-#- "all"
-- "kinetic"
-# - "simple"
-- "analytical"
+# Activate the different modes
+mode_kinetic: 1
+mode_analytical: 1
+mode_simple: 0
 
 # Save results
 save_to: .

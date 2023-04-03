@@ -17,7 +17,7 @@ function setup {
     source miniconda/bin/activate
   fi
   which python
-  python -m pip install jupyterlab matplotlib pandas scipy numpy
+  python -m pip install matplotlib pandas scipy numpy
   # Clone repository and install required packages
   git clone https://github.com/xsuite/tree_maker.git
   cd tree_maker
@@ -27,7 +27,7 @@ function setup {
 }
 
 # Call the function without arguments to setup the package
-setup
+#setup
 # Call the function with an argument to download Python for a specific platform
 #setup forMac
-#setup forLinux
+setup forLinux
