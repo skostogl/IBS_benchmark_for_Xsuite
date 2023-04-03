@@ -14,7 +14,7 @@ from user_defined_functions import generate_run_sh_htc
 # Import the configuration
 config=yaml.safe_load(open('config.yaml'))
 
-study_name        = f"SPS_injection_ions"
+study_name        = f"SPS_injection_ions_test"
 
 # Loop over the following parameters
 n_part_s = [5000]
