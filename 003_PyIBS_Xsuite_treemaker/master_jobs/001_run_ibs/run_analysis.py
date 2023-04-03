@@ -14,10 +14,14 @@ import pandas as pd
 from scipy.constants import e as qe
 from scipy.constants import m_p, m_e
 import yaml
+import tree_maker
 
 # Load simulation parameters
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
+
+# Initiate log file 
+tree_maker.tag_json.tag_it(config['log_file'], 'started')  
 
 import sys
 sys.path.append(config['ibs_lib_path'])
@@ -238,4 +242,6 @@ for mode in modes:
         pd_simple.index.name = 'Turn'
         pathlib.Path(config['save_to']).mkdir(parents=True, exist_ok=True)
         pd_simple.to_parquet(f"{save_to}/xsuite_{mode}.parquet")
-        
+
+# Log as completed 
+tree_maker.tag_json.tag_it(config['log_file'], 'completed')  
