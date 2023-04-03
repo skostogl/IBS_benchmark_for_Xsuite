@@ -20,7 +20,7 @@ study_name        = f"SPS_injection_ions"
 n_part_s = [5000]
 n_turns_s = [80]
 IBS_step_s = [5]
-xsuite_line_s = ["/afs/cern.ch/work/s/skostogl/private/IBS_benchmark/IBS_benchmark_for_Xsuite/000_sequences_and_XSlines/SPS_injection_ions/xsuite_line/sps_line_ions_for_tracking.json"]
+xsuite_line_s = ["/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_benchmark_for_Xsuite/000_sequences_and_XSlines/SPS_injection_ions/xsuite_line/sps_line_ions_for_tracking.json"]
 bunch_intensity_s = [3.5e8, 3.5e9, 3.5e10, 3.5e11]
 emit_x_s = [1.2612]
 emit_y_s = [0.9081]
@@ -28,13 +28,13 @@ sigma_z_s = [0.039]
 V0max_s = [1.7]
 
 # Fixed parameters
-ibs_lib_path = "/afs/cern.ch/work/s/skostogl/private/IBS_benchmark/IBS_for_Xsuite"
+ibs_lib_path = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_for_Xsuite"
 modes = ['all']
 energy = 1415.72
 h = 4653
-mypython = "/afs/cern.ch/work/s/skostogl/private/workspaces/HLLHC_xsuite_Jul22/example_DA_study/miniconda/bin/activate"
+mypython = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_benchmark_for_Xsuite/003_PyIBS_Xsuite_treemaker/miniconda/bin/python"
 
-save_to = f"/eos/user/s/skostogl/IBSresults_{study_name}"
+save_to = f"/afs/cern.ch/work/e/elwaagaa/public/IBS/IBSresults_{study_name}"  # sofia uses "/eos/user/s/skostogl/IBSresults_{study_name}"
 from pathlib import Path
 Path(save_to).mkdir(parents=True, exist_ok=True)
 
