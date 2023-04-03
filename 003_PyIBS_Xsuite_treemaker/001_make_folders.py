@@ -34,7 +34,7 @@ energy = 1415.72
 h = 4653
 mypython = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_benchmark_for_Xsuite/003_PyIBS_Xsuite_treemaker/miniconda/bin/python"
 
-save_to = f"/afs/cern.ch/work/e/elwaagaa/public/IBS/IBSresults_{study_name}"  # sofia uses "/eos/user/s/skostogl/IBSresults_{study_name}"
+save_to = f"/eos/user/e/elwaagaa/PhD/Projects/IBS/IBSresults_{study_name}"  # sofia uses "/eos/user/s/skostogl/IBSresults_{study_name}"
 from pathlib import Path
 Path(save_to).mkdir(parents=True, exist_ok=True)
 
