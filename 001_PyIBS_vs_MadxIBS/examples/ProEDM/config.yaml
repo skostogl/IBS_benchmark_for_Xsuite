@@ -1,0 +1,28 @@
+# Activate/Deactivate flags
+flag_IBS: 1                 # If 1 calculate with IBS
+flag_SR: 0                  # If 1 calculate with SR
+
+duration: 0.16788935694584398        # rev period: 1.6788935694584399e-06, so this is 1e5 turns
+ibs_step: 1.6788935694584398e-04     # time step 100 turns
+
+# Sequence to load
+sequence: "../../../000_sequences_and_XSlines/ProEDM/proedm.seq" 
+sequence_name: 'proedm'
+
+energy: 0.968                           # energy in GeV
+bunch_intensity: 1e9
+emit_x: 0.2537                         # normalized ex in um
+emit_y: 0.2537                         # ey in um
+blns: 375.44 
+bl_lev: 0.0                  
+particle: "proton"
+mass: 0.9382723
+radius: 1.534698e-18
+charge: 1
+
+V0max: 4.0                       # RF voltage in MV
+h: 6
+cc_name_knobs: "vrf400"          # not used
+
+# Save results
+save_to: ./IBS_output.parquet
