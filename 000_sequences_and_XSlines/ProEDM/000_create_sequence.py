@@ -1,3 +1,4 @@
+# An example from S. Siddique
 from cpymad.madx import Madx
 import numpy as np
 from scipy.constants import c
