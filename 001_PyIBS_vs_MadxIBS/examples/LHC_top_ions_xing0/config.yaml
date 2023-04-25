@@ -2,12 +2,15 @@
 flag_IBS: 1                 # If 1 calculate with IBS
 flag_SR: 0                  # If 1 calculate with SR
 
+ibs_lib_path: ../../master
+
 #duration: 1 #0.001425986        # Duration in seconds
 duration: 7200        # Duration in seconds
 ibs_step: 300 #0.001 #1.4259865297332022e-05                # time step
 
 # Sequence to load
-sequence: "../../../000_sequences_and_XSlines/LHC_top_ions_xing0/LHC.seq" 
+#sequence: "../../../000_sequences_and_XSlines/LHC_top_ions_xing0/LHC.seq" 
+sequence: "/Users/skostogl/Documents/workspace/LumiModel/ibs_Michalis/scripts/IBS_package/comparison_python_MADX/LHC/lines_and_sequences/top_ions_xing0/run3_top.seq" 
 sequence_name: 'lhcb1'
 
 energy: 557600.0   # 6.8 x Z

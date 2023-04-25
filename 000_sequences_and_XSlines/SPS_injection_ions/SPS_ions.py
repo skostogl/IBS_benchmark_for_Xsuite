@@ -102,5 +102,6 @@ with open(folder_name +'/sps_line_ions_for_tracking.json', 'w') as fid:
 
 mad.input(f'''
 save,sequence=sps,file=SPS_Q26_injection_ions.seq;
+twiss, file="filename.tfs";
 ''')
 

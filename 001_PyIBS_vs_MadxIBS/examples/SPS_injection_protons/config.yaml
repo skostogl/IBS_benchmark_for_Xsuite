@@ -2,6 +2,8 @@
 flag_IBS: 1                 # If 1 calculate with IBS
 flag_SR: 0                  # If 1 calculate with SR
 
+ibs_lib_path: ../../master
+
 #duration: 1 #0.001425986        # Duration in seconds
 duration: 20        # Duration in seconds
 ibs_step: 1 #0.001 #1.4259865297332022e-05                # time step

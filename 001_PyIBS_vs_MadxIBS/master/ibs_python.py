@@ -8,12 +8,15 @@ from cpymad.madx import Madx
 import xtrack as xt
 import xpart as xp
 import sys
-from lib.IBSfunctions import *
 import pandas as pd
 import yaml
 
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
+
+sys.path.append(config['ibs_lib_path'])
+from lib.IBSfunctions import *
+
 
 madx = Madx()
 
