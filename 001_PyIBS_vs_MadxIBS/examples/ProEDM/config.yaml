@@ -2,6 +2,8 @@
 flag_IBS: 1                 # If 1 calculate with IBS
 flag_SR: 0                  # If 1 calculate with SR
 
+ibs_lib_path: ../../master
+
 duration: 0.16788935694584398        # rev period: 1.6788935694584399e-06, so this is 1e5 turns
 ibs_step: 1.6788935694584398e-04     # time step 100 turns
 
