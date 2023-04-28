@@ -101,7 +101,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     ax11.plot(pd_analytical['Ixx'][1:], c='b', linewidth=4, label='Analytical: Ixx')
 if 'simple' in modes:
-    ax11.plot(pd_simple['Ixx'][1:], c='b', linewidth=4, label='Simple: Ixx')
+    ax11.plot(pd_simple['DSx'][1:], c='b', linewidth=4, label='Simple DSx')
 ax11.set_xlabel('Turns')
 ax11.legend(fontsize=12)
 
@@ -110,7 +110,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     ax22.plot(pd_analytical['Iyy'][1:], c='g', linewidth=4, label='Analytical: Iyy')
 if 'simple' in modes:
-    ax22.plot(pd_simple['Iyy'][1:], c='b', linewidth=4, label='Simple: Iyy')
+    ax22.plot(pd_simple['DSy'][1:], c='b', linewidth=4, label='Simple DSy')
 ax22.set_xlabel('Turns')
 ax22.legend(fontsize=12)
 
@@ -119,7 +119,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     ax33.plot(pd_analytical['Ipp'][1:], c='k', linewidth=4, label='Ipp')
 if 'simple' in modes:
-    ax33.plot(pd_simple['Ipp'][1:], c='b', linewidth=4, label='Simple: Ipp')
+    ax33.plot(pd_simple['DSz'][1:], c='b', linewidth=4, label='Simple DSz')
 ax33.set_xlabel('Turns')
 ax33.legend(fontsize=12)
 
