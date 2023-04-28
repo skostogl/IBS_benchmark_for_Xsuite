@@ -6,6 +6,8 @@ import os
 import psutil
 from pathlib import Path
 
+tree_maker_name = 'tree_maker_SPS_top_ions_simple_kick_number_of_particles.json'
+
 class cluster():
     def __init__(self, run_on='local_pc'):
        if run_on in ['local_pc', 'htc', 'slurm']:
@@ -117,7 +119,7 @@ class cluster():
 
 
 if __name__=='__main__':
-    root = tree_maker.tree_from_json('tree_maker_SPS_injection_ions_test.json')
+    root = tree_maker.tree_from_json(tree_maker_name)
     if root.has_been('completed'):
         print('All descendants of root are completed!')
     else:
