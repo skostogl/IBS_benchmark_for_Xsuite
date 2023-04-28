@@ -34,7 +34,7 @@ ibs_lib_path = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_for_Xsuite"
 mode_kinetic = 1
 mode_analytical = 1
 mode_simple = 0
-modes = ['all']
+#modes = ['all']
 
 energy = 1415.72
 h = 4653
