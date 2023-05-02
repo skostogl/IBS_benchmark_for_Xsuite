@@ -62,7 +62,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     plt.plot(pd_analytical['epsn_x'].values, c='k', label='Analytical')
 if 'simple' in modes:
-    plt.plot(pd_simple['epsn_x'].values, c='r--', label='Simple')
+    plt.plot(pd_simple['epsn_x'].values, c='r', label='Simple')
 plt.legend(fontsize=12)
 
 plt.sca(ax2)
@@ -71,7 +71,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     plt.plot(pd_analytical['epsn_y'].values, c='k', label='Analytical')
 if 'simple' in modes:
-    plt.plot(pd_simple['epsn_y'].values, c='r--', label='Simple')
+    plt.plot(pd_simple['epsn_y'].values, c='r', label='Simple')
 
 plt.sca(ax3)
 if 'kinetic' in modes:
@@ -79,7 +79,7 @@ if 'kinetic' in modes:
 if 'analytical' in modes:
     plt.plot(1e3*pd_analytical['sig_delta'].values, c='k', label='Analytical')
 if 'simple' in modes:
-    plt.plot(1e3*pd_simple['sig_delta'].values, c='r--', label='Simple')
+    plt.plot(1e3*pd_simple['sig_delta'].values, c='r', label='Simple')
 
 ax1.set_ylabel(r'$\varepsilon_{x,n}$ [m]')
 ax1.set_xlabel('Turns')
