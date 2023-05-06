@@ -14,7 +14,7 @@ from user_defined_functions import generate_run_sh_htc
 # Import the configuration
 config=yaml.safe_load(open('config.yaml'))
 
-study_name        = f"SPS_injection_ions"
+study_name        = f"SPS_injection_ions_test"
 
 # Loop over the following parameters
 n_part_s = [5000]
@@ -29,13 +29,7 @@ V0max_s = [1.7]
 
 # Fixed parameters
 ibs_lib_path = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_for_Xsuite"
-
-# Define what modes to run
-mode_kinetic = 1
-mode_analytical = 1
-mode_simple = 0
-#modes = ['all']
-
+modes = ['all']
 energy = 1415.72
 h = 4653
 mypython = "/afs/cern.ch/work/e/elwaagaa/public/IBS/IBS_benchmark_for_Xsuite/003_PyIBS_Xsuite_treemaker/miniconda/bin/activate"
@@ -60,10 +54,7 @@ for child, (n_part, n_turns, IBS_step, xsuite_line, bunch_intensity, emit_x, emi
                                     'sigma_z': sigma_z,
                                     'V0max': V0max,
                                     'h': h,
-                                    'mode_kinetic': mode_kinetic,
-				    'mode_analytical': mode_analytical,
-				    'mode_simple': mode_simple,
-                                    #'modes': modes,  # each mode is activated individually
+                                    'modes': modes,
                                     'save_to':f"{save_to}/{child:03}",
                                     'log_file': f"{os.getcwd()}/{study_name}/{child:03}/tree_maker.log"
                                     }

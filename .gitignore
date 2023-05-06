@@ -21,3 +21,4 @@ temp
 *.parquet
 lib
 *.txt
+*.sub

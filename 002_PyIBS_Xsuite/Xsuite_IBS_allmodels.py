@@ -77,7 +77,7 @@ particles0 = xp.generate_matched_gaussian_bunch(
          nemitt_x=nemitt_x, nemitt_y=nemitt_y, sigma_z=sigma_z,
          particle_ref=p0, tracker=tracker)
 
-tw = tracker.twiss(particle_ref = p0)
+tw = line.twiss(particle_ref = p0)
 
 # ----- Initialize IBS object -----
 IBS = NagaitsevIBS()
@@ -133,7 +133,7 @@ for mode in modes:
             
     elif mode == 'simple':
         turn_by_turn_simple_integrals = {}
-        integral_keys = ['Ixx', 'Iyy', 'Ipp']
+        integral_keys = ['DSx', 'DSy', 'DSz']
         for nn in integral_keys:
             turn_by_turn_simple_integrals[nn] = np.zeros((n_turns), dtype = float)
 
@@ -205,12 +205,12 @@ for mode in modes:
                 IBS.calculate_simple_kick(particles)
             IBS.apply_simple_kick(particles)
             
-            turn_by_turn_simple_integrals['Ixx'][i] = IBS.Ixx
-            turn_by_turn_simple_integrals['Iyy'][i] = IBS.Iyy
-            turn_by_turn_simple_integrals['Ipp'][i] = IBS.Ipp  
+            turn_by_turn_simple_integrals['DSx'][i] = IBS.DSx
+            turn_by_turn_simple_integrals['DSy'][i] = IBS.DSy
+            turn_by_turn_simple_integrals['DSz'][i] = IBS.DSz  
             
         # Track the particles
-        tracker.track(particles)
+        line.track(particles)
 
     # Add the normalized emittances in one go
     turn_by_turn['epsn_x'] = IBS.betar*IBS.gammar*turn_by_turn['eps_x']
